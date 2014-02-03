@@ -600,7 +600,7 @@
 
 						if(response.status === 200)
 						{
-							callback(responseData || 'Success', responseData, callbackData);
+							callback(null, responseData || 'Success', callbackData);
 						}
 						else
 						{
