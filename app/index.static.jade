@@ -1,0 +1,22 @@
+doctype
+html(lang='en')
+	head
+		title AllState
+		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+		link(rel='stylesheet', href='stylesheets/app.css', type='text/css')
+		link(rel='shortcut icon', href='images/favicon.ico', type='image/x-icon')
+	body
+		#main-content
+			#header
+				include modules/header/header
+
+			#page-content
+				include modules/sidebar/sidebar
+				include page-login/page-root/login
+
+		#overlays
+			include base/jade/overlays
+
+		#scripts
+			script(src='javascripts/vendor.js')
+			script(src='javascripts/app.js')

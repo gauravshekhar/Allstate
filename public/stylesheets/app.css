@@ -1,0 +1,288 @@
+a:link {
+  text-decoration: none;
+  color: #0096d6;
+}
+a:visited {
+  text-decoration: none;
+  color: #0096d6;
+}
+a:hover {
+  color: #00467f;
+}
+.clear {
+  clear: both;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  list-style-type: none;
+}
+input {
+  border: 1px solid #bababa;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.13) inset;
+}
+.btn-submit {
+  background-color: #00467f;
+  border: 1px solid #00467f;
+  color: #fff;
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+.clear {
+  clear: both;
+}
+fieldset {
+  border: 0px solid;
+  margin: 0;
+  padding: 0;
+}
+#loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: rgba(0,0,0,0.3);
+  width: 100%;
+  height: 100%;
+  min-width: 981px;
+/*
+	background: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000)";
+	filter: unquote('progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000)');
+	zoom: 1;
+	*/
+}
+#loading img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  margin-left: -164px;
+  height: 30px;
+}
+.messages {
+  color: #4a4a4a;
+  padding: 12px 12px 12px 43px;
+  border: 3px solid;
+  border-radius: 4px;
+  background-position: 5px;
+  background-repeat: no-repeat;
+  margin: 14px;
+  line-height: 1.2em;
+}
+.messages h1 {
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+.messages p {
+  margin: 0;
+}
+.messages ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.messages ul li {
+  margin-bottom: 3px;
+}
+.messages ul li:last-child {
+  margin-bottom: 0px;
+}
+.messages.err {
+  background-image: url("../images/error.png");
+  background-color: #eacccc;
+  border-color: #b10808;
+}
+.messages.info {
+  background-image: url("../images/information.png");
+  background-color: #daecf7;
+  border-color: #0677b9;
+}
+.messages.warn {
+  background-image: url("../images/warning.png");
+  background-color: #fdf4db;
+  border-color: #f9cc2a;
+}
+.messages.success {
+  background-image: url("../images/success.png");
+  background-color: #e3f5d8;
+  border-color: #5da21f;
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+html body {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  font-size: 13px;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+html body #main-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+html body #page-content {
+  margin: 0 auto;
+  position: relative;
+  width: 1001px;
+  border: 1px solid #d6d6d6;
+  border-top: 0;
+  margin-bottom: 10px;
+  background-color: #fcfcfc;
+}
+#header {
+  background-color: #fcfcfc;
+  border: 1px solid #d6d6d6;
+  margin: 0 auto;
+  padding: 10px;
+  width: 981px;
+}
+#header .logo-wrapper {
+  width: 320px;
+  float: left;
+}
+#header .logo-wrapper img {
+  display: block;
+}
+#header .logo-wrapper .logo-title {
+  color: #0096d6;
+  font-weight: 700;
+  margin: 10px 0 0 10px;
+}
+#header .right {
+  float: left;
+  margin-top: 5px;
+}
+#header ul {
+  display: block;
+}
+#header ul li:last-child {
+  margin: 0 !important;
+}
+#header ul li {
+  display: inline;
+  margin: 0 8px 0 0;
+}
+#header ul li a {
+  color: #444;
+}
+#header ul li a:hover {
+  text-decoration: underline;
+}
+#header .welcome {
+  color: #0096d6;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: 5px;
+}
+#sidebar {
+  width: 250px;
+  margin: 15px 5px 0 0;
+}
+#login-page {
+  min-height: 500px;
+}
+#login-page .left {
+  float: left;
+  padding: 14px;
+}
+#login-page .left .login-wrapper,
+#login-page .left .more-wrapper {
+  width: 350px;
+}
+#login-page .left .login-wrapper .wrapper,
+#login-page .left .more-wrapper .wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #f7f7f7;
+  border: 1px solid #e8e8e8;
+}
+#login-page .left .login-wrapper .wrapper .messages,
+#login-page .left .more-wrapper .wrapper .messages {
+  margin: 15px 21px 5px 14px !important;
+}
+#login-page .left .login-wrapper .wrapper form,
+#login-page .left .more-wrapper .wrapper form {
+  margin: 15px 0;
+}
+#login-page .left .login-wrapper .wrapper table,
+#login-page .left .more-wrapper .wrapper table {
+  font-size: 15px;
+  width: 90%;
+  margin: 0 auto;
+}
+#login-page .left .login-wrapper .wrapper table tr td,
+#login-page .left .more-wrapper .wrapper table tr td {
+  height: 42px;
+}
+#login-page .left .login-wrapper .wrapper table tr td:first-child,
+#login-page .left .more-wrapper .wrapper table tr td:first-child {
+  width: 100px;
+}
+#login-page .left .login-wrapper .wrapper table tr label,
+#login-page .left .more-wrapper .wrapper table tr label {
+  color: #666;
+}
+#login-page .left .login-wrapper .wrapper table tr .radio-label:last-child,
+#login-page .left .more-wrapper .wrapper table tr .radio-label:last-child {
+  margin: 0 0 0 5px;
+}
+#login-page .left .login-wrapper .wrapper table tr .radio-label,
+#login-page .left .more-wrapper .wrapper table tr .radio-label {
+  margin: 0 16px 0 5px;
+}
+#login-page .left .login-wrapper .wrapper table tr input[type="text"],
+#login-page .left .more-wrapper .wrapper table tr input[type="text"],
+#login-page .left .login-wrapper .wrapper table tr input[type="password"],
+#login-page .left .more-wrapper .wrapper table tr input[type="password"] {
+  width: 90%;
+  padding: 10px;
+}
+#login-page .left .login-wrapper .wrapper table tr button,
+#login-page .left .more-wrapper .wrapper table tr button {
+  float: right;
+}
+#login-page .left .login-wrapper {
+  position: relative;
+  z-index: 200;
+}
+#login-page .left .more-wrapper {
+  position: relative;
+  z-index: 100;
+  top: -172px;
+}
+#login-page .divider {
+  float: left;
+  border-right: 1px solid #d6d6d6;
+  height: 485px;
+}
+#login-page .right {
+  margin-left: 380px;
+  padding: 14px;
+  position: relative;
+  top: -4px;
+}
+#login-page .right img {
+  width: 592px;
+}
+#login-page .right .mission {
+  margin-top: 20px;
+}
+#login-page .right .mission .title {
+  color: #0096d6;
+  font-size: 19px;
+}

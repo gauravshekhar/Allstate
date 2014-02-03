@@ -1,0 +1,31 @@
+{
+  "author": "Marcus Randall",
+  "name": "allstate-frontend",
+  "description": "The Project for Allstate",
+  "version": "0.0.1",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.10 || 0.8 || 0.9"
+  },
+  "scripts": {
+    "start": "brunch watch --server",
+    "test": "brunch test"
+  },
+  "dependencies": {
+    "javascript-brunch": ">= 1.0 < 1.6",
+    "coffee-script-brunch": ">= 1.0 < 1.6",
+    "css-brunch": ">= 1.0 < 1.6",
+    "stylus-brunch": ">= 1.0 < 1.6",
+    "uglify-js-brunch": ">= 1.0 < 1.6",
+    "clean-css-brunch": ">= 1.0 < 1.6",
+    "jshint-brunch": "~1.5.1"
+  },
+  "devDependencies": {
+    "jade-brunch": "~1.5.1",
+    "static-jade-brunch": "~1.4.11"
+  }
+}

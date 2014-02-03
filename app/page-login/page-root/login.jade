@@ -1,0 +1,86 @@
+// ko if: currentPage && currentPage() === 'LoginPage'
+// ko with: LoginPage
+
+.page#login-page
+	.left
+		.login-wrapper
+			.wrapper
+				form(data-bind="submit:authorizeLogin.call")
+					
+					// ko if: errors && errors().length > 0
+					.messages.err
+						ul(data-bind="foreach:errors")
+							li(data-bind="text:$data")
+					// /ko
+
+					table
+						tbody
+							tr
+								td: label(for="username") Username:
+								td
+									div: input(id="username", name="username", type="text")
+							tr
+								td: label(for="password") Password:
+								td
+									div: input(id="password", name="password", type="password")
+							tr
+								td
+									a(href="javascript:void(0)", data-bind="click:toggleHelpModule") Need Help?
+								td
+									button(id="login-button", class="btn-submit", type="submit") Login
+									.clear
+
+
+
+		.more-wrapper.hide
+			.wrapper
+				form(data-bind="submit:sendEmail.call")
+					// ko if: helpErrors && helpErrors().length > 0
+					.messages.err
+						ul(data-bind="foreach:helpErrors")
+							li(data-bind="text:$data")
+					// /ko
+					
+					table
+						tbody
+							tr
+								td: label Forgot:
+								td 
+									fieldset
+										input(type="radio", id="request-username", name="type", value="username")
+										label.radio-label Username
+										input(type="radio", id="request-password", name="type", value="password")
+										label.radio-label Password
+							tr
+								td: label(for="email") Email:
+								td
+									div: input(id="email", name="email", type="text")
+							tr
+								td(colspan="2")
+									button(class="btn-submit", type="submit") Send Email
+									.clear
+
+	.divider
+
+	.right
+		img(src="images/home.png")
+
+		.mission
+			.title Our Purpose
+			div We are the Good Hands: We help customers realize their hopes and dreams by providing the best products and services to protect them from life's uncertainties and prepare them for the future. 
+
+		.mission
+			.title Our Strategic Vision
+			div Deliver substantially more value than the competition by reinventing protection and retirement to improve customers' lives. 
+
+		.mission
+			.title Our Corporate Goal
+			div Create long-term value by serving our stakeholders, taking appropriate risks and leveraging our capabilities and strategic assets.
+
+
+	.clear
+
+// /ko
+// /ko
+
+
