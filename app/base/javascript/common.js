@@ -396,7 +396,7 @@
 						{
 							if(response.status === 200)
 							{
-
+								console.log(response);
 								callback(null, JSON.parse(response.statusText), callbackData);
 							}
 							else
