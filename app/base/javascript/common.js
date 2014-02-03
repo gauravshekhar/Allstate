@@ -392,18 +392,16 @@
 					dataType : 'json',
 					complete : function(response)
 					{
-						console.log(response);
-
 						try
 						{
 							if(response.status === 200)
 							{
 
-								callback(null, JSON.parse(response.responseText), callbackData);
+								callback(null, JSON.parse(response.statusText), callbackData);
 							}
 							else
 							{
-								callback(JSON.parse(response.responseText), null, callbackData);
+								callback(JSON.parse(response.statusText), null, callbackData);
 							}
 						}
 						catch(exception)
