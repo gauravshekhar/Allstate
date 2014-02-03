@@ -390,8 +390,10 @@
 					type : 'json',
 					data : data,
 					dataType : 'json',
-					complete : function(response, y, z)
+					complete : function(response)
 					{
+						console.log(response);
+						
 						try
 						{
 							if(response.status === 200)
