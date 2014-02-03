@@ -394,14 +394,27 @@
 					{
 						try
 						{
+							var responseData = null;
+
+							try
+							{
+								responseData = JSON.parse(response.statusText);
+							}
+							catch(exception e)
+							{
+								console.log('not valid json');
+							}
+
+							console.log(response);
+							console.log(responseData);
+
 							if(response.status === 200)
 							{
-								console.log(response);
-								callback(null, JSON.parse(response.statusText), callbackData);
+								callback(responseData || 'Success', responseData, callbackData);
 							}
 							else
 							{
-								callback(JSON.parse(response.statusText), null, callbackData);
+								callback(responseData || 'Error', null, callbackData);
 							}
 						}
 						catch(exception)
