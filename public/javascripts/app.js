@@ -583,7 +583,17 @@
 					complete : function(response)
 					{
 						var responseData = null;
-						responseData = JSON.parse(response.statusText);
+
+						try
+						{
+							responseData = JSON.parse(response.statusText);
+						}
+						catch(exception)
+						{
+							console.log('invalid response');
+						}
+
+
 
 						console.log(response);
 						console.log(responseData);
@@ -596,7 +606,7 @@
 						{
 							callback(responseData || 'Error', null, callbackData);
 						}
-						
+
 						/*
 						try
 						{
