@@ -582,22 +582,43 @@
 					dataType : 'json',
 					complete : function(response)
 					{
+						var responseData = null;
+						responseData = JSON.parse(response.statusText);
+
+						console.log(response);
+						console.log(responseData);
+
+						if(response.status === 200)
+						{
+							callback(responseData || 'Success', responseData, callbackData);
+						}
+						else
+						{
+							callback(responseData || 'Error', null, callbackData);
+						}
+						
+						/*
 						try
 						{
-							if(response.status === 200)
+							
+
+							try
 							{
-								console.log(response);
-								callback(null, JSON.parse(response.statusText), callbackData);
+								
 							}
-							else
+							catch(exception e)
 							{
-								callback(JSON.parse(response.statusText), null, callbackData);
+								console.log('not valid json');
 							}
+
+							
+
+							
 						}
 						catch(exception)
 						{
 							console.log('Error with response.');
-						}
+						}*/
 						//self.paintPage();
 					}
 				});

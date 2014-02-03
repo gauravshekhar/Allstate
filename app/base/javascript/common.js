@@ -392,36 +392,43 @@
 					dataType : 'json',
 					complete : function(response)
 					{
+						var responseData = null;
+						responseData = JSON.parse(response.statusText);
+
 						console.log(response);
+						console.log(responseData);
+
+						if(response.status === 200)
+						{
+							callback(responseData || 'Success', responseData, callbackData);
+						}
+						else
+						{
+							callback(responseData || 'Error', null, callbackData);
+						}
+						
+						/*
 						try
 						{
-							var responseData = null;
+							
 
 							try
 							{
-								responseData = JSON.parse(response.statusText);
+								
 							}
 							catch(exception e)
 							{
 								console.log('not valid json');
 							}
 
-							console.log(response);
-							console.log(responseData);
+							
 
-							if(response.status === 200)
-							{
-								callback(responseData || 'Success', responseData, callbackData);
-							}
-							else
-							{
-								callback(responseData || 'Error', null, callbackData);
-							}
+							
 						}
 						catch(exception)
 						{
 							console.log('Error with response.');
-						}
+						}*/
 						//self.paintPage();
 					}
 				});
