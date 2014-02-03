@@ -392,6 +392,7 @@
 					dataType : 'json',
 					complete : function(response)
 					{
+						console.log(response);
 						try
 						{
 							var responseData = null;
