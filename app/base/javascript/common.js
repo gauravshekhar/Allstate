@@ -400,13 +400,13 @@
 						}
 						catch(exception)
 						{
-							console.log('invalid response');
+							//console.log('invalid response');
 						}
 
 
 
-						console.log(response);
-						console.log(responseData);
+						console.log(response.status);
+						console.log(response.status === 200);
 
 						if(response.status === 200)
 						{
