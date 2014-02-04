@@ -400,13 +400,7 @@
 						}
 						catch(exception)
 						{
-							//console.log('invalid response');
 						}
-
-
-
-						console.log(response.status);
-						console.log(response.status === 200);
 
 						if(response.status === 200)
 						{
@@ -417,28 +411,6 @@
 							callback(responseData || 'Error', null, callbackData);
 						}
 
-						/*
-						try
-						{
-							
-
-							try
-							{
-								
-							}
-							catch(exception e)
-							{
-								console.log('not valid json');
-							}
-
-							
-
-							
-						}
-						catch(exception)
-						{
-							console.log('Error with response.');
-						}*/
 						//self.paintPage();
 					}
 				});
@@ -993,64 +965,6 @@
 			{
 				var extension = fileName.split('.').pop();
 				return (extension.toUpperCase() === desiredExtension.toUpperCase());
-			},
-			uploadFile : function(form, formWrapper, destination, callback)
-			{
-				var $wrapper, iframe, $iframe, $form;
-
-				$wrapper = $('#upload-file');
-				$wrapper.empty();
-
-				$iframe = $('<iframe></iframe>');
-				$iframe.attr('id', 'uploadIframe');
-				$iframe.attr('name', 'uploadIframe');
-				$wrapper.append($iframe[0]);
-
-				$iframe.on('load', function()
-				{
-					self.uploadFileCallback(this, callback);
-				});
-
-				$form = $(form);
-				$form.attr('target', 'uploadIframe');
-				$form.attr('action', self.formatUploadUrl(destination));
-				$form.attr('method', 'POST');
-				$form.attr('enctype', 'multipart/form-data');
-				$form.attr('encoding', 'multipart/form-data');
-				$iframe.append($form[0]);
-				$form[0].submit();
-				$(formWrapper).append(form);
-			},
-			uploadFileCallback : function(iframe, callback)
-			{
-				callback(null, true);
-				/*
-				var iframeDocument, response;
-				
-				iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-				
-				if(iframeDocument && iframeDocument.body.innerText) 
-				{
-					response = iframeDocument.body.innerText;
-				} 
-				else if(iframeDocument && iframeDocument.body.innerHTML) 
-				{
-					response = iframeDocument.body.innerHTML;
-				} 
-				else if(iframe.document) 
-				{
-					response = iframe.document.body.innerText;
-				}
-
-				if(response)
-				{
-					callback(null, response);
-				}
-				else
-				{
-					callback(response, null);
-				}
-				*/
 			}
 		};
 

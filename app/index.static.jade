@@ -6,13 +6,14 @@ html(lang='en')
 		link(rel='stylesheet', href='stylesheets/app.css', type='text/css')
 		link(rel='shortcut icon', href='images/favicon.ico', type='image/x-icon')
 	body
-		#main-content
+		#main-content.hide
 			#header
 				include modules/header/header
 
 			#page-content
 				include modules/sidebar/sidebar
 				include page-login/page-root/login
+				include page-dashboard/page-root/dashboard
 
 		#overlays
 			include base/jade/overlays

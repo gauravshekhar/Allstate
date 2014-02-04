@@ -2,7 +2,8 @@
 {
 	var RouteTable = 
 	{
-		'LoginPage' : '#/login/'
+		'LoginPage' : '#/login/',
+		'DashboardPage' : '#/dashboard/'
 	};
 
 	Export('RouteTable', RouteTable);

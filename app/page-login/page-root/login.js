@@ -19,6 +19,7 @@
 			{
 				self.initKnockout();
 				Common.setCurrentPage(self, 'LoginPage');
+				self.bindTheDOM();
 			},
 			destroy : function()
 			{
@@ -29,6 +30,10 @@
 				self.message = ko.observable(null);
 				self.errors = ko.observableArray([]);
 				self.helpErrors = ko.observableArray([]);
+			},
+			bindTheDOM : function()
+			{
+				$('#main-content').removeClass('hide');
 			},
 			authorizeLogin : 
 			{
@@ -55,10 +60,10 @@
 				},
 				callback : function(errors, response)
 				{
-					Common.hideLoading();
-					
 					if(errors)
 					{
+						Common.hideLoading();
+
 						$.each(errors, function()
 						{
 							self.errors.push(this);
@@ -66,7 +71,7 @@
 					}
 					else
 					{
-						alert('Success');
+						Common.setHash('dashboard');
 					}
 				}
 			},
