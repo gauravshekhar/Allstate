@@ -3,7 +3,8 @@
 
 .page#dashboard-page
 	// ko if: userPartners().length > 0
-	div FUCK FUCK FUCK
+	ul(data-bind="foreach:userPartners")
+		li(data-bind="text:partnerName")
 	// /ko
 
 // /ko

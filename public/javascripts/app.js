@@ -1466,7 +1466,19 @@ $(document).ready(function()
 					else
 					{
 						Common.showLoading();
-						self.requestData = Common.stringify(self.selectedCheckboxes());
+
+						var temp = [];
+
+						$.each(self.selectedCheckboxes(), function()
+						{
+							temp.push(this.id);
+						});
+						
+						self.requestData = Common.stringify(
+						{
+							partners:temp
+						});
+
 						Common.POST(Common.formatUrl('partners'), self.requestData, 'application/json', self.submitPartners.callback);
 					}
 				},

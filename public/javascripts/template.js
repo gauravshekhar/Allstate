@@ -51,7 +51,7 @@ attrs = attrs || jade.attrs; escape = escape || jade.escape; rethrow = rethrow |
 var buf = [];
 with (locals || {}) {
 var interp;
-buf.push('<!-- ko if: currentPage() === \'DashboardPage\'--><!-- ko with: DashboardPage--><div id="dashboard-page" class="page"><!-- ko if: userPartners().length > 0--><div>FUCK FUCK FUCK</div><!-- /ko--></div><!-- /ko--><!-- /ko-->');
+buf.push('<!-- ko if: currentPage() === \'DashboardPage\'--><!-- ko with: DashboardPage--><div id="dashboard-page" class="page"><!-- ko if: userPartners().length > 0--><ul data-bind="foreach:userPartners"><li data-bind="text:partnerName"></li></ul><!-- /ko--></div><!-- /ko--><!-- /ko-->');
 }
 return buf.join("");
 };module.exports = function anonymous(locals, attrs, escape, rethrow, merge) {
