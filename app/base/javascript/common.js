@@ -393,13 +393,14 @@
 					complete : function(response)
 					{
 						var responseData = null;
-
+						
 						try
 						{
 							responseData = JSON.parse(response.statusText);
 						}
 						catch(exception)
 						{
+
 						}
 
 						if(response.status === 200)

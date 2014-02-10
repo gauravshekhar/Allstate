@@ -103,8 +103,6 @@
 
 					if(errors)
 					{
-						errors = JSON.parse(errors);
-
 						$.each(errors, function()
 						{
 							self.helpErrors.push(this);

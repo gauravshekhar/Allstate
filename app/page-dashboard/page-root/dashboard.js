@@ -35,6 +35,7 @@
 			{
 				Common.callRestServices(
 				[
+					{'name':'user', 'vm':MasterVM},
 					{'name':'partners', 'vm':self}
 				]);
 			},
@@ -44,6 +45,7 @@
 				{
 					if(self.userPartners().length === 0)
 					{
+						console.log(MasterVM.user());
 						Common.showModal('user-partners');
 					}
 				});

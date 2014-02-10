@@ -3,7 +3,7 @@
 
 #user-partners.modal(role='dialog', aria-labelledby='dialog-title')
 	a.close(data-bind='click:destroyIconClick') Close
-	h1#dialog-title Add Default Partners
+	h1(id="dialog-title", data-bind="text:'Hello ' + $parent.user().firstName+ ' - Add Your Default Partners'") Add Default Partners
 
 	form(data-bind="submit:submitPartners.call")
 		include ../../base/jade/error-handling
