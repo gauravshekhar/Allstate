@@ -1388,6 +1388,8 @@ $(document).ready(function()
 			},
 			destroyIconClick : function()
 			{
+				self.errors([]);
+				
 				if(self.selectedCheckboxes().length === 0 || self.selectedCheckboxes().length > 5)
 				{
 					self.errors.push('Please select one to five partners');

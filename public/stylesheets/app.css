@@ -130,16 +130,6 @@ fieldset {
   min-width: 1003px;
   height: 100%;
 }
-@media all and (max-width: 950px) {
-  .modal {
-    width: 490px !important;
-  }
-}
-@media all and (max-width: 550px) {
-  .modal {
-    width: 90% !important;
-  }
-}
 .modal {
   display: none;
   font-size: 14px;
@@ -151,8 +141,7 @@ fieldset {
   margin: 0 auto;
   background: #efefef;
   border-radius: 4px;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.3), 0px 6px 15px rgba(0,0,0,0.6);
-  max-height: 80%;
+  min-width: 490px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -172,9 +161,8 @@ fieldset {
   clear: both;
   font-size: 22px;
   font-family: 'Varela Round', 'Helvetica', 'Arial', 'Lucida Sans Unicode', sans-serif;
-  border-top: 1px solid #b6d7eb;
-  border-bottom: 1px solid #b6d7eb;
-  padding: 10px 0 10px 14px;
+  border-bottom: 1px solid #9e9e9e;
+  padding: 0 0 14px 14px;
 }
 .modal ul {
   width: 100%;
@@ -302,7 +290,6 @@ html body #page-content {
 }
 #sidebar {
   width: 250px;
-  margin: 15px 5px 0 0;
 }
 #user-partners .text-wrapper {
   margin: 14px;
@@ -416,7 +403,7 @@ html body #page-content {
 #login-page .divider {
   float: left;
   border-right: 1px solid #d6d6d6;
-  height: 485px;
+  height: 500px;
 }
 #login-page .right {
   margin-left: 380px;
