@@ -19,6 +19,8 @@
 			{
 				self.initKnockout();
 				Common.setCurrentPage(self, 'DashboardPage');
+				self.callRestServices();
+				self.displayPartnersModal();
 			},
 			destroy : function()
 			{
@@ -28,6 +30,23 @@
 			{
 				self.allPartners = ko.observableArray([]);
 				self.userPartners = ko.observableArray([]);
+			},
+			callRestServices : function()
+			{
+				Common.callRestServices(
+				[
+					{'name':'partners', 'vm':self}
+				]);
+			},
+			displayPartnersModal : function()
+			{
+				Common.waitForServiceCalls(function()
+				{
+					if(self.userPartners().length === 0)
+					{
+						Common.showModal('user-partners');
+					}
+				});
 			}
 		};
 

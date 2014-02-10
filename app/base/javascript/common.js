@@ -411,7 +411,7 @@
 							callback(responseData || 'Error', null, callbackData);
 						}
 
-						//self.paintPage();
+						self.paintPage();
 					}
 				});
 			}, 
@@ -950,7 +950,7 @@
 
 					$.each(restArray, function()
 					{
-						if(this.forceRefresh)
+						if(this.forceRefresh && this.forceRefresh === true)
 						{
 							Cache['_' + this.name].get(this.vm, this.forceRefresh);
 						}

@@ -9,4 +9,90 @@
 	top 0px
 	left 0px
 	width 100%
+	min-width 1003px
 	height 100%
+
+@media all and (max-width: 950px)
+	.modal
+		width 490px !important
+
+@media all and (max-width: 550px)
+	.modal
+		width 90% !important
+
+.modal
+	display none
+	font-size 14px
+	z-index 1000
+	top -25px
+	position relative
+	width 50%
+	max-width 600px
+	margin 0 auto
+	background #efefef
+	border-radius 4px
+	box-shadow inset 0 0 20px rgba(0, 0, 0, 0.3), 0px 6px 15px rgba(0, 0, 0, 0.6)
+	max-height 80%
+	overflow-x hidden
+	overflow-y auto
+
+	.messages
+		margin 14px 14px 0 14px
+
+	.close
+		text-indent -9999px
+		width 18px
+		height 18px
+		float right
+		background url('../images/close.png') no-repeat right center
+		margin 10px 14px 10px 0
+		cursor pointer
+
+	h1
+		clear both
+		font-size 22px
+		font-family 'Varela Round', 'Helvetica', 'Arial', 'Lucida Sans Unicode', sans-serif
+		border-top 1px solid #b6d7eb
+		border-bottom 1px solid #b6d7eb
+		padding 10px 0 10px 14px
+
+	ul
+		border-box()
+		width 100%
+		padding 14px
+		list-style-type disc !important
+
+	li
+		margin-bottom 12px
+
+		label
+			width 35%
+			display inline-block
+			vertical-align top
+			margin-top 9px
+
+		input,textarea
+			width 65%
+			display inline-block
+
+		textarea
+			height 90px
+
+		input[type="checkbox"]
+			width 15px
+			position relative
+			left -4px
+			top 4px
+
+		
+		.hint
+			clear both
+			color #999
+			display block
+			font-size 12px
+			margin 5px 0 0 35%
+
+		button
+			display block
+			float right
+			font-size 15px

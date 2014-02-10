@@ -38,8 +38,9 @@
 {
 	var RouteTable = 
 	{
-		'LoginPage' : '#/login/',
-		'DashboardPage' : '#/dashboard/'
+		'LoginPage'           : '#/login/',
+		'DashboardPage'       : '#/dashboard/',
+		'UserPartnersModal'   : '#/user-partners/'
 	};
 
 	Export('RouteTable', RouteTable);
@@ -602,7 +603,7 @@
 							callback(responseData || 'Error', null, callbackData);
 						}
 
-						//self.paintPage();
+						self.paintPage();
 					}
 				});
 			}, 
@@ -1141,7 +1142,7 @@
 
 					$.each(restArray, function()
 					{
-						if(this.forceRefresh)
+						if(this.forceRefresh && this.forceRefresh === true)
 						{
 							Cache['_' + this.name].get(this.vm, this.forceRefresh);
 						}
@@ -1298,7 +1299,47 @@
 		{
 			init : function()
 			{
+				self.partners = null;
+			},
 
+
+
+
+			_partners :
+			{
+				get : function(viewModel, forceRefresh)
+				{
+					if(!self.partners || forceRefresh)
+					{
+						Common.GET(Common.formatUrl('partners'), '', 'application/json', self._partners.callback, {viewModel:viewModel});
+					}
+					else
+					{
+						Common.paintPage();
+						self._partners.populateViewModel(viewModel, self.partners);
+					}
+				},
+				callback : function(error, response, callbackData)
+				{
+					//response = {"allPartners":[{"id":"b44","tagLine":"Sheer Driving Pleasure","partnerName":"BMW","displayName":"BMW-US","partnerLogo":"/images/partner/bmw/bmw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI","partnerLogo":"/images/partner/audi/audi-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"G30","tagLine":"FindNewRoads","partnerName":"Chevy","displayName":"GM","partnerLogo":"/images/partner/chevy/chevy-logo.gif","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"}],"userPartners":[{"id":"b44","tagLine":"Sheer Driving Pleasure","partnerName":"BMW","displayName":"BMW-US","partnerLogo":"/images/partner/bmw/bmw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI","partnerLogo":"/images/partner/audi/audi-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"}]};
+					response = {"allPartners":[{"id":"b44","tagLine":"Sheer Driving Pleasure","partnerName":"BMW","displayName":"BMW-US","partnerLogo":"/images/partner/bmw/bmw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI","partnerLogo":"/images/partner/audi/audi-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"G30","tagLine":"FindNewRoads","partnerName":"Chevy","displayName":"GM","partnerLogo":"/images/partner/chevy/chevy-logo.gif","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"}],"userPartners":[]};
+					
+					if(response)
+					{
+						response = self._partners.formatResponse(response);
+						self.partners = response;
+						self._partners.populateViewModel(callbackData.viewModel, response);
+					}
+				},
+				formatResponse : function(response)
+				{
+					return response;
+				},
+				populateViewModel : function(viewModel, response)
+				{
+					viewModel.allPartners(response.allPartners);
+					viewModel.userPartners(response.userPartners);
+				}
 			}
 		};
 
@@ -1312,6 +1353,113 @@ $(document).ready(function()
 {	
 	Import('RouteConfig');
 });
+
+(function()
+{
+	var self;
+	var Common = Import('Common');
+	var MasterVM = Import('MasterVM');
+
+	var UserPartnersModal = (function()
+	{
+		var UserPartnersModal = function()
+		{
+			self = this;
+			self.init();
+		};
+
+
+		UserPartnersModal.prototype =
+		{
+			init : function()
+			{
+				self.initKnockout();
+				self.callPageViewModel();
+				Common.setCurrentModal(self, 'UserPartnersModal', '#user-partners');
+			},
+			destroy : function(modal2modal)
+			{
+				Common.destroyModal(self, 'UserPartnersModal', '#user-partners', modal2modal);
+			},
+			initKnockout : function()
+			{
+				self.errors = ko.observableArray([]);
+				self.selectedCheckboxes = ko.observableArray([]);
+			},
+			destroyIconClick : function()
+			{
+				if(self.selectedCheckboxes().length === 0 || self.selectedCheckboxes().length > 5)
+				{
+					self.errors.push('Please select one to five partners');
+				}
+				else
+				{
+					self.destroy();
+				}
+			},
+			callPageViewModel : function()
+			{
+				self.allPartners = MasterVM.DashboardPage().allPartners;
+				self.userPartners = MasterVM.DashboardPage().userPartners;
+			},
+			checkboxClicked : function(data, event)
+			{
+				if(event.target.checked)
+				{
+					self.selectedCheckboxes.push(data);
+				}
+				else
+				{
+					self.selectedCheckboxes($.grep(self.selectedCheckboxes(), function(value, index)
+					{
+						return (value === data) ? false : true;
+					}));
+				}
+
+				return true;
+			},
+			submitPartners : 
+			{
+				call : function()
+				{
+					self.errors([]);
+
+					if(self.selectedCheckboxes().length === 0 || self.selectedCheckboxes().length > 5)
+					{
+						self.errors.push('Please select one to five partners');
+					}
+					else
+					{
+						Common.showLoading();
+						self.requestData = Common.stringify(self.selectedCheckboxes());
+						Common.POST(Common.formatUrl('partners'), self.requestData, 'application/json', self.submitPartners.callback);
+					}
+				},
+				callback : function(errors, response)
+				{
+					Common.hideLoading();
+
+					if(response)
+					{
+						self.userPartners(self.selectedCheckboxes());
+						self.destroy();
+					}
+					else
+					{
+						$.each(errors, function()
+						{
+							self.errors.push(this);
+						});
+					}
+				}	
+			}
+		};
+
+		return UserPartnersModal;
+	})();
+
+	Export('UserPartnersModal', UserPartnersModal);
+})();
 
 (function()
 {
@@ -1334,6 +1482,8 @@ $(document).ready(function()
 			{
 				self.initKnockout();
 				Common.setCurrentPage(self, 'DashboardPage');
+				self.callRestServices();
+				self.displayPartnersModal();
 			},
 			destroy : function()
 			{
@@ -1343,6 +1493,23 @@ $(document).ready(function()
 			{
 				self.allPartners = ko.observableArray([]);
 				self.userPartners = ko.observableArray([]);
+			},
+			callRestServices : function()
+			{
+				Common.callRestServices(
+				[
+					{'name':'partners', 'vm':self}
+				]);
+			},
+			displayPartnersModal : function()
+			{
+				Common.waitForServiceCalls(function()
+				{
+					if(self.userPartners().length === 0)
+					{
+						Common.showModal('user-partners');
+					}
+				});
 			}
 		};
 

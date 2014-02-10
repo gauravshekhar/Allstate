@@ -44,6 +44,9 @@ fieldset {
   margin: 0;
   padding: 0;
 }
+.strong {
+  font-weight: 700;
+}
 #loading {
   position: absolute;
   top: 0;
@@ -124,7 +127,94 @@ fieldset {
   top: 0px;
   left: 0px;
   width: 100%;
+  min-width: 1003px;
   height: 100%;
+}
+@media all and (max-width: 950px) {
+  .modal {
+    width: 490px !important;
+  }
+}
+@media all and (max-width: 550px) {
+  .modal {
+    width: 90% !important;
+  }
+}
+.modal {
+  display: none;
+  font-size: 14px;
+  z-index: 1000;
+  top: -25px;
+  position: relative;
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #efefef;
+  border-radius: 4px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.3), 0px 6px 15px rgba(0,0,0,0.6);
+  max-height: 80%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal .messages {
+  margin: 14px 14px 0 14px;
+}
+.modal .close {
+  text-indent: -9999px;
+  width: 18px;
+  height: 18px;
+  float: right;
+  background: url("../images/close.png") no-repeat right center;
+  margin: 10px 14px 10px 0;
+  cursor: pointer;
+}
+.modal h1 {
+  clear: both;
+  font-size: 22px;
+  font-family: 'Varela Round', 'Helvetica', 'Arial', 'Lucida Sans Unicode', sans-serif;
+  border-top: 1px solid #b6d7eb;
+  border-bottom: 1px solid #b6d7eb;
+  padding: 10px 0 10px 14px;
+}
+.modal ul {
+  width: 100%;
+  padding: 14px;
+  list-style-type: disc !important;
+}
+.modal li {
+  margin-bottom: 12px;
+}
+.modal li label {
+  width: 35%;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 9px;
+}
+.modal li input,
+.modal li textarea {
+  width: 65%;
+  display: inline-block;
+}
+.modal li textarea {
+  height: 90px;
+}
+.modal li input[type="checkbox"] {
+  width: 15px;
+  position: relative;
+  left: -4px;
+  top: 4px;
+}
+.modal li .hint {
+  clear: both;
+  color: #999;
+  display: block;
+  font-size: 12px;
+  margin: 5px 0 0 35%;
+}
+.modal li button {
+  display: block;
+  float: right;
+  font-size: 15px;
 }
 html {
   height: 100%;
@@ -161,11 +251,23 @@ html body #page-content {
   width: 981px;
 }
 #header .logo-wrapper {
+  position: relative;
   width: 320px;
   float: left;
 }
 #header .logo-wrapper img {
   display: block;
+}
+#header .logo-wrapper .addon {
+  background-color: #fff;
+  position: absolute;
+  bottom: 24px;
+  left: 50px;
+  color: #ccc;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: right;
+  width: 115px;
 }
 #header .logo-wrapper .logo-title {
   color: #0096d6;
@@ -201,6 +303,43 @@ html body #page-content {
 #sidebar {
   width: 250px;
   margin: 15px 5px 0 0;
+}
+#user-partners .text-wrapper {
+  margin: 14px;
+}
+#user-partners .text-wrapper div {
+  margin-bottom: 10px;
+}
+#user-partners .radio-wrapper {
+  margin: 20px 14px 14px 14px;
+}
+#user-partners .radio-wrapper .title {
+  margin-bottom: 5px;
+}
+#user-partners .radio-wrapper .container .each {
+  display: block;
+  float: left;
+  margin-right: 20px;
+}
+#user-partners .radio-wrapper .container .each input {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: -2px;
+}
+#user-partners .radio-wrapper .container .each label {
+  margin-left: 5px;
+}
+#user-partners .submit-wrapper {
+  margin: 14px;
+}
+#user-partners .submit-wrapper span {
+  display: block;
+  float: right;
+}
+#user-partners .submit-wrapper button {
+  display: block;
+  float: right;
 }
 #login-page {
   min-height: 500px;
