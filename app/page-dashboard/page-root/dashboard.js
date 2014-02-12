@@ -28,24 +28,22 @@
 			},
 			initKnockout : function()
 			{
-				self.allPartners = ko.observableArray([]);
-				self.userPartners = ko.observableArray([]);
+		
 			},
 			callRestServices : function()
 			{
 				Common.callRestServices(
 				[
 					{'name':'user', 'vm':MasterVM},
-					{'name':'partners', 'vm':self}
+					{'name':'partners', 'vm':MasterVM}
 				]);
 			},
 			displayPartnersModal : function()
 			{
 				Common.waitForServiceCalls(function()
 				{
-					if(self.userPartners().length === 0)
+					if(MasterVM.userPartners().length === 0)
 					{
-						console.log(MasterVM.user());
 						Common.showModal('user-partners');
 					}
 				});

@@ -80,7 +80,7 @@
 			{
 				var prettyForm = {};
 
-				$(form).find('input,textarea').each(function()
+				$(form).find('input,textarea,select').each(function()
 				{
 					prettyForm[$(this).attr('name')] = self.value(this);
 				});

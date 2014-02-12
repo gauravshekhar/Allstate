@@ -2,9 +2,21 @@
 // ko with: DashboardPage
 
 .page#dashboard-page
-	// ko if: userPartners().length > 0
-	ul(data-bind="foreach:userPartners")
-		li(data-bind="text:partnerName")
+	// ko if: $root.user()
+	.welcome
+		span(data-bind="text:$root.user().firstName")
+		span 's Default Partners
+	// /ko
+
+	// ko if: $root.userPartners().length > 0
+	.partners(data-bind="foreach:$root.userPartners")
+		.partner
+			img(data-bind="attr:{src:'images/partners/' +id + '.jpg'}")
+			.name(data-bind="text:partnerName")
+
+		// ko if: ($index() === ($root.userPartners().length - 1))
+		.clear
+		// /ko
 	// /ko
 
 // /ko

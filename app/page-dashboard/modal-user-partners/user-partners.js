@@ -18,7 +18,7 @@
 			init : function()
 			{
 				self.initKnockout();
-				self.callPageViewModel();
+				self.callGlobalViewModel();
 				Common.setCurrentModal(self, 'UserPartnersModal', '#user-partners');
 			},
 			destroy : function(modal2modal)
@@ -43,10 +43,10 @@
 					self.destroy();
 				}
 			},
-			callPageViewModel : function()
+			callGlobalViewModel : function()
 			{
-				self.allPartners = MasterVM.DashboardPage().allPartners;
-				self.userPartners = MasterVM.DashboardPage().userPartners;
+				self.allPartners = MasterVM.allPartners;
+				self.userPartners = MasterVM.userPartners;
 			},
 			checkboxClicked : function(data, event)
 			{

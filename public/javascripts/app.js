@@ -89,12 +89,48 @@
 			setGlobalBindings : function()
 			{
 				self.user = ko.observable(null);
+				self.searchErrors = ko.observable(null);
+				self.allPartners = ko.observableArray([]);
+				self.userPartners = ko.observableArray([]);
 			},
 			applyBindings : function()
 			{
 				if(!ko.dataFor(document.body))
 				{
 					ko.applyBindings(self);
+				}
+			},
+			displayMoreInfo : function(data, event)
+			{
+				var $container, $triangle;
+
+				$triangle = $('#triangle-' + data.id);
+				$container = $('#more-info-' + data.id);
+			
+				if($container.is(':visible'))
+				{
+					$triangle.addClass('closed');
+					$triangle.removeClass('open');
+					$container.slideUp();
+				}
+				else
+				{
+					$triangle.removeClass('closed');
+					$triangle.addClass('open');
+					$container.slideDown();
+				}
+			},
+			sidebarSearch : function(form)
+			{
+				var Common, prettyForm;
+
+				self.searchErrors(null);
+				Common = Import('Common');
+				prettyForm = Common.serializeForm(form);
+
+				if(!prettyForm.query)
+				{
+					return self.searchErrors('Search criteria is required');
 				}
 			}
 		};
@@ -272,7 +308,7 @@
 			{
 				var prettyForm = {};
 
-				$(form).find('input,textarea').each(function()
+				$(form).find('input,textarea,select').each(function()
 				{
 					prettyForm[$(this).attr('name')] = self.value(this);
 				});
@@ -1324,8 +1360,8 @@
 				},
 				callback : function(errors, response, callbackData)
 				{
-					//response = {"id":"gshek","firstName":"Gaurav","lastName":"Shekhar","networkId":"gshek","accessExeiryDate":"Feb 9, 2014","createDate":"Feb 6, 2014","createdBy":"gnait","updateDate":"Feb 6, 2014","updatedBy":"gshek"};
-					console.log(response);
+					response = {"id":"gshek","firstName":"Gaurav","lastName":"Shekhar","networkId":"gshek","accessExeiryDate":"Feb 9, 2014","createDate":"Feb 6, 2014","createdBy":"gnait","updateDate":"Feb 6, 2014","updatedBy":"gshek"};
+
 					if(response)
 					{
 						self.user = response;
@@ -1358,10 +1394,8 @@
 				},
 				callback : function(error, response, callbackData)
 				{
-					//response = {"allPartners":[{"id":"VWG","partnerName":"Audi/VW VIP","displayName":"Audi/VW VIP","partnerLogo":"/images/partner/vw/vw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A54","partnerName":"AME Drivers Edge","displayName":"AME Drivers Edge","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A85","partnerName":"Answer Finl","displayName":"Answer Finl","partnerLogo":"/images/partner/","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"},{"id":"ATT","partnerName":"AT&T","displayName":"AT&T","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"D15","partnerName":"Donlen Corp","displayName":"Donlen Corp","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"ENC","partnerName":"Encompass","displayName":"Encompass","partnerLogo":"/images/partner/","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"},{"id":"A86","partnerName":"Auto Driveaway VTS  ","displayName":"Auto Driveaway VTS  ","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"AUR","partnerName":"Auto Rescue","displayName":"Auto Rescue","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A84","partnerName":"Auto Security (FIMC)","displayName":"Auto Security (FIMC)","partnerLogo":"/images/partner/","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"},{"id":"T22","partnerName":"Auto Trader Classic ","displayName":"Auto Trader Classic ","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"AVI","partnerName":"Avis/Budget","displayName":"Avis/Budget","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"AXP","partnerName":"AXP-American Express","displayName":"AXP-American Express","partnerLogo":"/images/partner/","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"},{"id":"BW","partnerName":"Better World","displayName":"Better World","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"BKO","partnerName":"BKO Runoff","displayName":"BKO Runoff","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"B44","partnerName":"BMW","displayName":"BMW","partnerLogo":"/images/partner/","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"},{"id":"BMC","partnerName":"BMW Canada","displayName":"BMW Canada","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"AAO","partnerName":"BP Amoco","displayName":"BP Amoco","partnerLogo":"/images/partner/","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"B46","partnerName":"Bridge/Firestone","displayName":"Bridge/Firestone","partnerLogo":"/images/partner/","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"},{"id":"BRL","partnerName":"BRL Runoff","displayName":"BRL Runoff","partnerLogo":"/images/partner/","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"},{"id":"b44","tagLine":"Sheer Driving Pleasure","partnerName":"BMW","displayName":"BMW-US","partnerLogo":"/images/partner/bmw/bmw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI","partnerLogo":"/images/partner/audi/audi-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"G30","tagLine":"FindNewRoads","partnerName":"Chevy","displayName":"GM","partnerLogo":"/images/partner/chevy/chevy-logo.gif","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"}],"userPartners":[]};
-					//response = {"allPartners":[{"id":"b44","tagLine":"Sheer Driving Pleasure","partnerName":"BMW","displayName":"BMW-US","partnerLogo":"/images/partner/bmw/bmw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI","partnerLogo":"/images/partner/audi/audi-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"G30","tagLine":"FindNewRoads","partnerName":"Chevy","displayName":"GM","partnerLogo":"/images/partner/chevy/chevy-logo.gif","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"}],"userPartners":[{"id":"b44","tagLine":"Sheer Driving Pleasure","partnerName":"BMW","displayName":"BMW-US","partnerLogo":"/images/partner/bmw/bmw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI","partnerLogo":"/images/partner/audi/audi-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"}]};
-					//response = {"allPartners":[{"id":"b44","tagLine":"Sheer Driving Pleasure","partnerName":"BMW","displayName":"BMW-US","partnerLogo":"/images/partner/bmw/bmw-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI","partnerLogo":"/images/partner/audi/audi-logo.gif","effectiveDate":"Feb 6, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 6, 2014","createdBy":"gnait"},{"id":"G30","tagLine":"FindNewRoads","partnerName":"Chevy","displayName":"GM","partnerLogo":"/images/partner/chevy/chevy-logo.gif","effectiveDate":"Feb 8, 2014","disableDate":"Feb 9, 2014","createdDate":"Feb 8, 2014","createdBy":"gnait"}],"userPartners":[]};
-					console.log(response);
+					response = {"allPartners":[{"id":"VWG","partnerName":"Audi/VW VIP","displayName":"Audi/VW VIP"},{"id":"A54","partnerName":"AME Drivers Edge","displayName":"AME Drivers Edge"},{"id":"A85","partnerName":"Answer Finl","displayName":"Answer Finl"},{"id":"ATT","partnerName":"AT&T","displayName":"AT&T"},{"id":"D15","partnerName":"Donlen Corp","displayName":"Donlen Corp"},{"id":"ENC","partnerName":"Encompass","displayName":"Encompass"},{"id":"A86","partnerName":"Auto Driveaway VTS","displayName":"Auto Driveaway VTS"},{"id":"AUR","partnerName":"Auto Rescue","displayName":"Auto Rescue"},{"id":"A84","partnerName":"Auto Security (FIMC)","displayName":"Auto Security (FIMC)"},{"id":"T22","partnerName":"Auto Trader Classic","displayName":"Auto Trader Classic"},{"id":"AVI","partnerName":"Avis/Budget","displayName":"Avis/Budget"},{"id":"AXP","partnerName":"AXP-American Express","displayName":"AXP-American Express"},{"id":"BW","partnerName":"Better World","displayName":"Better World"},{"id":"BKO","partnerName":"BKO Runoff","displayName":"BKO Runoff"},{"id":"B44","partnerName":"BMW","displayName":"BMW"},{"id":"BMC","partnerName":"BMW Canada","displayName":"BMW Canada"},{"id":"AAO","partnerName":"BP Amoco","displayName":"BP Amoco"},{"id":"B46","partnerName":"Bridge/Firestone","displayName":"Bridge/Firestone"},{"id":"BRL","partnerName":"BRL Runoff","displayName":"BRL Runoff"},{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI"}],"userPartners":[{"id":"A74","tagLine":"Truth in Engineering","partnerName":"AUDI","displayName":"AUDI"}, {"id":"ATT","partnerName":"AT&T","displayName":"AT&T"}, {"id":"B44","partnerName":"BMW","displayName":"BMW"}, {"id":"BW","partnerName":"Better World","displayName":"Better World"}, {"id":"BRL","partnerName":"BRL Runoff","displayName":"BRL Runoff"}]};
+
 					if(response)
 					{
 						self.partners = response;
@@ -1407,7 +1441,7 @@ $(document).ready(function()
 			init : function()
 			{
 				self.initKnockout();
-				self.callPageViewModel();
+				self.callGlobalViewModel();
 				Common.setCurrentModal(self, 'UserPartnersModal', '#user-partners');
 			},
 			destroy : function(modal2modal)
@@ -1432,10 +1466,10 @@ $(document).ready(function()
 					self.destroy();
 				}
 			},
-			callPageViewModel : function()
+			callGlobalViewModel : function()
 			{
-				self.allPartners = MasterVM.DashboardPage().allPartners;
-				self.userPartners = MasterVM.DashboardPage().userPartners;
+				self.allPartners = MasterVM.allPartners;
+				self.userPartners = MasterVM.userPartners;
 			},
 			checkboxClicked : function(data, event)
 			{
@@ -1538,24 +1572,22 @@ $(document).ready(function()
 			},
 			initKnockout : function()
 			{
-				self.allPartners = ko.observableArray([]);
-				self.userPartners = ko.observableArray([]);
+		
 			},
 			callRestServices : function()
 			{
 				Common.callRestServices(
 				[
 					{'name':'user', 'vm':MasterVM},
-					{'name':'partners', 'vm':self}
+					{'name':'partners', 'vm':MasterVM}
 				]);
 			},
 			displayPartnersModal : function()
 			{
 				Common.waitForServiceCalls(function()
 				{
-					if(self.userPartners().length === 0)
+					if(MasterVM.userPartners().length === 0)
 					{
-						console.log(MasterVM.user());
 						Common.showModal('user-partners');
 					}
 				});

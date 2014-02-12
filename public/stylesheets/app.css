@@ -131,7 +131,6 @@ fieldset {
 }
 .modal {
   display: none;
-  font-size: 14px;
   z-index: 1000;
   top: 100px;
   position: absolute;
@@ -211,7 +210,7 @@ html body {
   margin: 0;
   padding: 0;
   font-family: arial;
-  font-size: 13px;
+  font-size: 14px;
   width: 100%;
   height: 100%;
   background-color: #f5f5f5;
@@ -227,9 +226,36 @@ html body #page-content {
   width: 1001px;
   border: 1px solid #d6d6d6;
   border-top: 0;
-  margin-bottom: 10px;
   background-color: #fcfcfc;
   min-height: 500px;
+}
+html body #page-content .page {
+  float: left;
+  position: relative;
+  width: 645px;
+}
+#footer-content {
+  margin: 0 auto;
+  width: 1001px;
+  background-color: #c0c0c0;
+  margin-bottom: 10px;
+  border: 1px solid #c0c0c0;
+}
+#footer-content ul {
+  font-size: 13px;
+  display: block;
+  float: right;
+  padding: 5px 10px 5px 0;
+}
+#footer-content ul li {
+  display: inline;
+  margin: 0 8px 0 0;
+}
+#footer-content ul li a {
+  color: #fff;
+}
+#footer-content ul li a:hover {
+  text-decoration: underline;
 }
 #header {
   background-color: #fcfcfc;
@@ -266,30 +292,124 @@ html body #page-content {
   float: left;
   margin-top: 5px;
 }
-#header ul {
+#header .right ul {
+  font-size: 13px;
   display: block;
 }
-#header ul li:last-child {
-  margin: 0 !important;
-}
-#header ul li {
+#header .right ul li {
   display: inline;
   margin: 0 8px 0 0;
 }
-#header ul li a {
+#header .right ul li a {
   color: #444;
 }
-#header ul li a:hover {
+#header .right ul li a:hover {
   text-decoration: underline;
 }
 #header .welcome {
   color: #0096d6;
   font-weight: 700;
   font-size: 15px;
-  margin-top: 5px;
+  margin-top: 11px;
 }
 #sidebar {
-  width: 250px;
+  width: 350px;
+  border-right: 1px solid #d6d6d6;
+  min-height: 500px;
+  float: left;
+}
+#sidebar .search {
+  position: relative;
+  width: 295px;
+  background-color: #f7f7f7;
+  border: 1px solid #e8e8e8;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 7px 15px 12px;
+}
+#sidebar .search .messages {
+  margin: 5px 7px 0 2px !important;
+}
+#sidebar .search table {
+  width: 100%;
+  margin: 0 auto;
+}
+#sidebar .search table tr td {
+  height: 35px;
+}
+#sidebar .search table tr td:first-child {
+  width: 100px;
+}
+#sidebar .search table tr label {
+  color: #666;
+}
+#sidebar .search table tr select {
+  width: 99%;
+}
+#sidebar .search table tr input[type="text"] {
+  width: 90%;
+  padding: 7px;
+}
+#sidebar .search table tr button {
+  display: block;
+  float: right;
+  margin: 5px 3px 0 0;
+}
+#sidebar .partners {
+  position: relative;
+  width: 295px;
+  margin: 22px auto;
+  background-color: #f7f7f7;
+  border: 1px solid #e8e8e8;
+  padding: 15px;
+}
+#sidebar .partners .title {
+  font-size: 16px;
+  font-weight: 700;
+}
+#sidebar .partners ul {
+  margin: 5px 0 0 0;
+}
+#sidebar .partners ul li {
+  padding: 5px 0;
+}
+#sidebar .partners ul li .closed {
+  float: left;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid #00467f;
+  position: relative;
+  top: 2px;
+  margin-right: 7px;
+}
+#sidebar .partners ul li .open {
+  float: left;
+  width: 0;
+  height: 0;
+  border-top: 6px solid #00467f;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  position: relative;
+  top: 7px;
+  right: 3px;
+  margin-right: 1px;
+}
+#sidebar .partners ul li .text:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#sidebar .partners ul li .text {
+  font-size: 15px;
+}
+#sidebar .partners ul li .more-info {
+  display: none;
+  margin: 2px 0 2px 14px;
+}
+#sidebar .partners ul li .more-info a {
+  display: block;
+  padding: 2px;
 }
 #user-partners .text-wrapper {
   margin: 14px;
@@ -329,8 +449,36 @@ html body #page-content {
   display: block;
   float: right;
 }
+#dashboard-page .welcome {
+  margin: 7px 0 0 9px;
+  font-size: 20px;
+}
+#dashboard-page .partners {
+  position: relative;
+  width: 670px;
+}
+#dashboard-page .partners .partner:hover {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+}
+#dashboard-page .partners .partner {
+  margin: 10px 10px 0;
+  float: left;
+  text-align: center;
+  border: 1px solid #fff;
+}
+#dashboard-page .partners .partner img {
+  display: block;
+  width: 138px;
+  border: 1px solid #f0f0f0;
+}
+#dashboard-page .partners .partner .name {
+  margin: 5px 0;
+}
 #login-page {
   min-height: 500px;
+  width: 1000px !important;
 }
 #login-page .left {
   float: left;
