@@ -260,7 +260,7 @@ html body #page-content .page {
 #header {
   background-color: #fcfcfc;
   border: 1px solid #d6d6d6;
-  margin: 0 auto;
+  margin: 10px auto 0;
   padding: 10px;
   width: 981px;
 }
@@ -313,18 +313,17 @@ html body #page-content .page {
   margin-top: 11px;
 }
 #sidebar {
-  width: 350px;
+  width: 300px;
   border-right: 1px solid #d6d6d6;
   min-height: 500px;
   float: left;
 }
 #sidebar .search {
   position: relative;
-  width: 295px;
+  width: 230px;
   background-color: #f7f7f7;
   border: 1px solid #e8e8e8;
-  margin: 0 auto;
-  margin-top: 10px;
+  margin: 18px auto 0;
   padding: 7px 15px 12px;
 }
 #sidebar .search .messages {
@@ -338,7 +337,7 @@ html body #page-content .page {
   height: 35px;
 }
 #sidebar .search table tr td:first-child {
-  width: 100px;
+  width: 60px;
 }
 #sidebar .search table tr label {
   color: #666;
@@ -353,11 +352,11 @@ html body #page-content .page {
 #sidebar .search table tr button {
   display: block;
   float: right;
-  margin: 5px 3px 0 0;
+  margin: 5px 2px 0 0;
 }
 #sidebar .partners {
   position: relative;
-  width: 295px;
+  width: 230px;
   margin: 22px auto;
   background-color: #f7f7f7;
   border: 1px solid #e8e8e8;
@@ -450,12 +449,13 @@ html body #page-content .page {
   float: right;
 }
 #dashboard-page .welcome {
-  margin: 7px 0 0 9px;
+  margin: 15px 0 0 14px;
   font-size: 20px;
 }
 #dashboard-page .partners {
   position: relative;
-  width: 670px;
+  width: 725px;
+  margin-left: 5px;
 }
 #dashboard-page .partners .partner:hover {
   cursor: pointer;
@@ -470,7 +470,7 @@ html body #page-content .page {
 }
 #dashboard-page .partners .partner img {
   display: block;
-  width: 138px;
+  width: 147px;
   border: 1px solid #f0f0f0;
 }
 #dashboard-page .partners .partner .name {
