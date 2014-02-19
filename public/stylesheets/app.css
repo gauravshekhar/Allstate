@@ -203,8 +203,10 @@ fieldset {
   font-size: 15px;
 }
 html {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 html body {
   margin: 0;
@@ -213,7 +215,7 @@ html body {
   font-size: 14px;
   width: 100%;
   height: 100%;
-  background-color: #f5f5f5;
+  background-color: #e7ebf2;
 }
 html body #main-content {
   width: 100%;
@@ -232,14 +234,15 @@ html body #page-content {
 html body #page-content .page {
   float: left;
   position: relative;
-  width: 645px;
+  width: 700px;
+  overflow: hidden;
 }
 #footer-content {
   margin: 0 auto;
   width: 1001px;
-  background-color: #c0c0c0;
-  margin-bottom: 10px;
-  border: 1px solid #c0c0c0;
+  background-color: #00467f;
+  margin-bottom: 40px;
+  border: 1px solid #00467f;
 }
 #footer-content ul {
   font-size: 13px;
@@ -248,6 +251,7 @@ html body #page-content .page {
   padding: 5px 10px 5px 0;
 }
 #footer-content ul li {
+  color: #fff;
   display: inline;
   margin: 0 8px 0 0;
 }
@@ -260,7 +264,7 @@ html body #page-content .page {
 #header {
   background-color: #fcfcfc;
   border: 1px solid #d6d6d6;
-  margin: 10px auto 0;
+  margin: 0 auto;
   padding: 10px;
   width: 981px;
 }
@@ -354,7 +358,7 @@ html body #page-content .page {
   float: right;
   margin: 5px 2px 0 0;
 }
-#sidebar .partners {
+#sidebar .container {
   position: relative;
   width: 230px;
   margin: 22px auto;
@@ -362,17 +366,17 @@ html body #page-content .page {
   border: 1px solid #e8e8e8;
   padding: 15px;
 }
-#sidebar .partners .title {
+#sidebar .container .title {
   font-size: 16px;
   font-weight: 700;
 }
-#sidebar .partners ul {
+#sidebar .container ul {
   margin: 5px 0 0 0;
 }
-#sidebar .partners ul li {
+#sidebar .container ul li {
   padding: 5px 0;
 }
-#sidebar .partners ul li .closed {
+#sidebar .container ul li .closed {
   float: left;
   width: 0;
   height: 0;
@@ -383,7 +387,7 @@ html body #page-content .page {
   top: 2px;
   margin-right: 7px;
 }
-#sidebar .partners ul li .open {
+#sidebar .container ul li .open {
   float: left;
   width: 0;
   height: 0;
@@ -395,18 +399,18 @@ html body #page-content .page {
   right: 3px;
   margin-right: 1px;
 }
-#sidebar .partners ul li .text:hover {
+#sidebar .container ul li .text:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-#sidebar .partners ul li .text {
+#sidebar .container ul li .text {
   font-size: 15px;
 }
-#sidebar .partners ul li .more-info {
+#sidebar .container ul li .more-info {
   display: none;
   margin: 2px 0 2px 14px;
 }
-#sidebar .partners ul li .more-info a {
+#sidebar .container ul li .more-info a {
   display: block;
   padding: 2px;
 }
@@ -452,6 +456,45 @@ html body #page-content .page {
   margin: 15px 0 0 14px;
   font-size: 20px;
 }
+#dashboard-page .more-info {
+  margin: 30px 20px 20px 20px;
+  position: relative;
+  left: 700px;
+  border: 1px solid #e9eaed;
+}
+#dashboard-page .more-info .title {
+  font-size: 18px;
+  border-bottom: 1px solid #e9eaed;
+  padding: 10px;
+  background: none repeat scroll 0 0 #f6f7f8;
+}
+#dashboard-page .more-info .description {
+  padding: 10px;
+  font-size: 13px;
+}
+#dashboard-page .more-info .tables {
+  padding: 10px;
+}
+#dashboard-page .more-info .tables .bookmarks-container {
+  margin-right: 0 !important;
+}
+#dashboard-page .more-info .tables .container {
+  float: left;
+  width: 300px;
+  border: 1px solid #e9eaed;
+  margin-right: 30px;
+}
+#dashboard-page .more-info .tables .container .heading {
+  background: none repeat scroll 0 0 #f6f7f8;
+  border-bottom: 1px solid #e9eaed;
+  color: #37404e;
+  font-weight: 700;
+  padding: 10px;
+}
+#dashboard-page .more-info .tables .container ul li {
+  padding: 10px;
+  border-bottom: 1px solid #e9eaed;
+}
 #dashboard-page .partners {
   position: relative;
   width: 725px;
@@ -459,8 +502,9 @@ html body #page-content .page {
 }
 #dashboard-page .partners .partner:hover {
   cursor: pointer;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
+  border: 1px solid #00467f;
+  background-color: #00467f;
+  color: #fff;
 }
 #dashboard-page .partners .partner {
   margin: 10px 10px 0;

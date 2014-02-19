@@ -3,14 +3,12 @@
 
 .page#dashboard-page
 	// ko if: $root.user()
-	.welcome
-		span(data-bind="text:$root.user().firstName")
-		span 's Default Partners
+	.welcome Reference System Dashboard
 	// /ko
 
 	// ko if: $root.userPartners().length > 0
 	.partners(data-bind="foreach:$root.userPartners")
-		.partner
+		.partner(data-bind="click:$parent.moreInfo")
 			img(data-bind="attr:{src:'images/partners/' +id + '.jpg'}")
 			.name(data-bind="text:partnerName")
 
@@ -18,6 +16,34 @@
 		.clear
 		// /ko
 	// /ko
+
+	
+	.more-info
+		// ko if: currentPartner()
+		// ko with: currentPartner
+		.title
+			span(data-bind="text:partnerName")
+			span &nbsp;·&nbsp;
+			a(href="javascript:void(0)") More
+		.description(data-bind="text:description")
+
+		.tables
+			// ko if: announcements.length > 0
+			.container
+				.heading Announcements
+				ul(data-bind="foreach:announcements")
+					li: a(href="javascript:void(0)", data-bind="text:title")
+			// /ko
+			// ko if: bookmarks.length > 0
+			.container.bookmarks-container
+				.heading Bookmarks
+				ul(data-bind="foreach:bookmarks")
+					li: a(href="javascript:void(0)", data-bind="text:name")
+			// /ko
+			.clear
+		
+		// /ko
+		// /ko
 
 // /ko
 // /ko

@@ -56,8 +56,17 @@
 			{
 				var $container, $triangle;
 
-				$triangle = $('#triangle-' + data.id);
-				$container = $('#more-info-' + data.id);
+				if($(event.target).hasClass('all'))
+				{
+					$triangle = $('#all-triangle-' + data.id);
+					$container = $('#all-more-info-' + data.id);
+				}
+				else
+				{
+					$triangle = $('#user-triangle-' + data.id);
+					$container = $('#user-more-info-' + data.id);
+				}
+				
 			
 				if($container.is(':visible'))
 				{

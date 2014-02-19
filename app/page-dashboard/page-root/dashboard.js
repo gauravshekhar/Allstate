@@ -28,7 +28,7 @@
 			},
 			initKnockout : function()
 			{
-		
+				self.currentPartner = ko.observable(null);
 			},
 			callRestServices : function()
 			{
@@ -37,6 +37,28 @@
 					{'name':'user', 'vm':MasterVM},
 					{'name':'partners', 'vm':MasterVM}
 				]);
+			},
+			moreInfo : function(data, event)
+			{
+				var $moreInfo = $('#dashboard-page').find('.more-info');
+				console.log(data);
+				if(self.currentPartner() !== null)
+				{
+					if(self.currentPartner() !== data)
+					{
+						$moreInfo.animate({left:-700}, 400, null, function()
+						{
+							self.currentPartner(data);
+							$(this).css('left', 700);
+							$moreInfo.animate({left:0}, 400);
+						});	
+					}
+				}
+				else
+				{
+					self.currentPartner(data);
+					$moreInfo.animate({left:0}, 400);
+				}
 			},
 			displayPartnersModal : function()
 			{
