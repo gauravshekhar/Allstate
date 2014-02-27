@@ -21,17 +21,7 @@
 						td(colspan="2")
 							button(class="btn-submit", type="submit") Search
 							.clear
-	.container
-		.title Global Announcements
-		ul
-			li: .text
-				a(href="javascript:void(0)") - Canada GM call center opening
-			li: .text
-				a(href="javascript:void(0)") - Maserati is an awesome car
-			li: .text
-				a(href="javascript:void(0)") - This site is so cool who made it?
-			li: .text
-				a(href="javascript:void(0)") - More
+	
 
 	// ko if: $root.userPartners().length > 0
 	.container
@@ -48,18 +38,17 @@
 					a(href="javascript:void(0)") - LCD Readouts
 	// /ko
 
-	// ko if: $root.allPartners().length > 0
 	.container
-		.title All Partners
-		ul(data-bind="foreach:$root.allPartners")
-			li
-				.closed(data-bind="attr:{id:'all-triangle-' + id}")
-				.text.all(data-bind="click:$root.displayMoreInfo, text:partnerName")
-				.clear
-				.more-info(data-bind="attr:{id:'all-more-info-' + id}")
-					a(href="javascript:void(0)") - Partner Information
-					a(href="javascript:void(0)") - Benefits and Services
-					a(href="javascript:void(0)") - Phone Numbers 
-					a(href="javascript:void(0)") - LCD Readouts
-	// /ko
+		.title Global Announcements
+		ol(data-bind="foreach:$root.announcements")
+			// ko if: $index() < 3
+			li: .text
+				a(data-bind="text:title", href="javascript:void(0)") - Canada GM call center opening
+			// /ko
+		// ko if: $root.announcements().length > 0
+		a(class="more", href="javascript:void(0)") - More Announcements
+		.clear
+		// /ko
+
+	
 // /ko

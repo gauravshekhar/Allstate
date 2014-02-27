@@ -41,6 +41,7 @@
 			setGlobalBindings : function()
 			{
 				self.user = ko.observable(null);
+				self.announcements = ko.observableArray([]);
 				self.searchErrors = ko.observable(null);
 				self.allPartners = ko.observableArray([]);
 				self.userPartners = ko.observableArray([]);

@@ -12,6 +12,10 @@ a:hover {
 .clear {
   clear: both;
 }
+ol {
+  margin: 0;
+  padding: 0;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -115,7 +119,7 @@ fieldset {
 }
 #modal-overlay {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 900;
   background-color: #000;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=full)";
@@ -370,6 +374,17 @@ html body #page-content .page {
   font-size: 16px;
   font-weight: 700;
 }
+#sidebar .container .more {
+  display: block;
+  float: right;
+  margin-top: 5px;
+}
+#sidebar .container ol {
+  margin: 10px 0 3px 18px;
+}
+#sidebar .container ol li {
+  margin-bottom: 7px;
+}
 #sidebar .container ul {
   margin: 5px 0 0 0;
 }
@@ -511,10 +526,11 @@ html body #page-content .page {
   float: left;
   text-align: center;
   border: 1px solid #fff;
+  width: 115px;
 }
 #dashboard-page .partners .partner img {
   display: block;
-  width: 147px;
+  width: 113px;
   border: 1px solid #f0f0f0;
 }
 #dashboard-page .partners .partner .name {
@@ -542,6 +558,12 @@ html body #page-content .page {
 #login-page .left .login-wrapper .wrapper .messages,
 #login-page .left .more-wrapper .wrapper .messages {
   margin: 15px 21px 5px 14px !important;
+}
+#login-page .left .login-wrapper .wrapper .standard,
+#login-page .left .more-wrapper .wrapper .standard {
+  margin: 10px 10px 9px 41px;
+  font-weight: 700;
+  color: #666;
 }
 #login-page .left .login-wrapper .wrapper form,
 #login-page .left .more-wrapper .wrapper form {

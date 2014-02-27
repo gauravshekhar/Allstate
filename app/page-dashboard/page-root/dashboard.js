@@ -35,13 +35,14 @@
 				Common.callRestServices(
 				[
 					{'name':'user', 'vm':MasterVM},
-					{'name':'partners', 'vm':MasterVM}
+					{'name':'partners', 'vm':MasterVM},
+					{'name':'announcements', 'vm':MasterVM}
 				]);
 			},
 			moreInfo : function(data, event)
 			{
 				var $moreInfo = $('#dashboard-page').find('.more-info');
-				console.log(data);
+	
 				if(self.currentPartner() !== null)
 				{
 					if(self.currentPartner() !== data)
