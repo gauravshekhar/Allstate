@@ -303,7 +303,7 @@
 			},
 			formatUrl : function(addon)
 			{
-				return '/ars/' + addon;
+				return '/ors/' + addon;
 			},
 			formatUploadUrl : function(addon)
 			{
@@ -630,6 +630,7 @@
 					dataType : 'json',
 					complete : function(response)
 					{
+						console.log(response);
 						var responseData = null;
 						
 						try
@@ -1307,7 +1308,7 @@
 				if(!matchFound)
 				{
 					// TODO: CREATE 404 PAGE 
-					console.log('THE REQUESTED PAGE IS INVALID');
+					//console.log('THE REQUESTED PAGE IS INVALID');
 					Common.setHash('login');
 				}
 			}
