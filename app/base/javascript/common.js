@@ -392,12 +392,11 @@
 					dataType : 'json',
 					complete : function(response)
 					{
-						console.log(response);
 						var responseData = null;
 						
 						try
 						{
-							responseData = JSON.parse(response.statusText);
+							responseData = JSON.parse(response.responseText);
 						}
 						catch(exception)
 						{
