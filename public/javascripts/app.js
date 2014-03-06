@@ -1276,7 +1276,8 @@
 			},
 			validateHash : function(routeTable)
 			{
-				console.log('Hash: ' + window.location.hash);
+				alert('Hash: ' + window.location.hash);
+				
 
 				var matchFound = false;
 
