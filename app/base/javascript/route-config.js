@@ -61,6 +61,8 @@
 			},
 			validateHash : function(routeTable)
 			{
+				console.log('Hash: ' + window.location.hash);
+
 				var matchFound = false;
 
 				$.each(routeTable, function() 
