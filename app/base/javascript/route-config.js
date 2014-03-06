@@ -42,10 +42,11 @@
 					}
 
 					currentHash = window.location.hash;
-					timeout();
+					clearTimeout(timeout);
+					timeout = setTimeout(checkHash, 100);
 				};
 
-				timeout = setTimeout(checkHash, 100);
+				checkHash();
 			},
 			navigateToNewHash : function()
 			{
