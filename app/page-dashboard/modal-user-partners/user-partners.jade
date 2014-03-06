@@ -21,7 +21,7 @@
 			.container(data-bind="foreach:allPartners")
 				.each
 					input(data-bind="click:$parent.checkboxClicked, attr:{id:partnerName}", type="checkbox")
-					label(data-bind="text:partnerName, attr:{for:partnerName}")
+					label(data-bind="text:partnerName, attr:{'for':partnerName}")
 			.clear
 					
 
