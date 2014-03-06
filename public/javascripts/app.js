@@ -1247,6 +1247,7 @@
 			{
 				$(window).on('hashchange', function()
 				{
+					alert('changed');
 					self.navigateToNewHash();
 				});
 			},
@@ -1276,9 +1277,6 @@
 			},
 			validateHash : function(routeTable)
 			{
-				alert('Hash: ' + window.location.hash);
-				
-
 				var matchFound = false;
 
 				$.each(routeTable, function() 
