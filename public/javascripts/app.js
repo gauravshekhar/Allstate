@@ -1245,7 +1245,7 @@
 			},
 			initializeHashBinding : function()
 			{
-				$(window).on('hashchange', function()
+				$(window).hashChange(function()
 				{
 					alert('changed');
 					self.navigateToNewHash();
