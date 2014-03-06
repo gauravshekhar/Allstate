@@ -1257,7 +1257,7 @@
 					}
 
 					currentHash = window.location.hash;
-					timeout();
+					timeout;
 				};
 
 				timeout = setTimeout(checkHash, 100);
