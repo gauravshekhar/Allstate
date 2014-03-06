@@ -1256,6 +1256,7 @@
 						self.navigateToNewHash();
 					}
 
+					currentHash = window.location.hash;
 					timeout();
 				};
 
