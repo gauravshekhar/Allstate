@@ -30,11 +30,21 @@
 			},
 			initializeHashBinding : function()
 			{
-				$(window).hashChange(function()
+				var currentHash, checkHash, timeout;
+
+				currentHash = window.location.hash;
+
+				checkHash = function()
 				{
-					alert('changed');
-					self.navigateToNewHash();
-				});
+					if(currentHash !== window.location.hash)
+					{
+						self.navigateToNewHash();
+					}
+
+					timeout();
+				};
+
+				timeout = setTimeout(checkHash, 100);
 			},
 			navigateToNewHash : function()
 			{
