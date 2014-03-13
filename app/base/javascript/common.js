@@ -174,11 +174,11 @@
 			},
 			showLoading : function()
 			{
-				$('#loading').removeClass('hide');
+				$('#loading-bg, #loading-img').show();
 			},
 			hideLoading : function()
 			{
-				$('#loading').addClass('hide');
+				$('#loading-bg, #loading-img').hide();
 			},
 			focusEnd : function($element)
 			{
@@ -356,7 +356,7 @@
 
 				if(data && data.responseText) 
 				{
-					var parsedErrors = $.parseJSON(data.responseText);
+					var parsedErrors = JSON.parse(data.responseText);
 
 					if(typeof parsedErrors.modelState !== 'undefined') 
 					{
@@ -396,7 +396,7 @@
 						
 						try
 						{
-							responseData = JSON.parse(response.responseText);
+							responseData = $.parseJSON(response.responseText);
 						}
 						catch(exception)
 						{

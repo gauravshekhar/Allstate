@@ -82,7 +82,11 @@
 
 						$.each(self.selectedCheckboxes(), function()
 						{
-							temp.push(this.id);
+							temp.push(
+							{
+								id : this.id,
+								index : this.index
+							});
 						});
 						
 						self.requestData = Common.stringify(
@@ -95,15 +99,24 @@
 				},
 				callback : function(errors, response)
 				{
-					Common.hideLoading();
-
 					if(response)
 					{
-						self.userPartners(self.selectedCheckboxes());
-						self.destroy();
+						Common.callRestServices(
+						[
+							{'name':'partners', 'vm':MasterVM, 'forceRefresh':true}
+						]);
+
+						Common.waitForServiceCalls(function()
+						{
+							alert('shit');
+							self.destroy();
+							Common.hideLoading();
+						});
 					}
 					else
 					{
+						Common.hideLoading();
+
 						$.each(errors, function()
 						{
 							self.errors.push(this);

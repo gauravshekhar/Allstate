@@ -53,22 +53,13 @@
 					ko.applyBindings(self);
 				}
 			},
-			displayMoreInfo : function(data, event)
+			firstLevelMenu : function(index, data, event)
 			{
 				var $container, $triangle;
 
-				if($(event.target).hasClass('all'))
-				{
-					$triangle = $('#all-triangle-' + data.id);
-					$container = $('#all-more-info-' + data.id);
-				}
-				else
-				{
-					$triangle = $('#user-triangle-' + data.id);
-					$container = $('#user-more-info-' + data.id);
-				}
-				
-			
+				$triangle = $('#partner-triangle-' + data.id);
+				$container = $('#partner-root-pages-' + data.id);
+
 				if($container.is(':visible'))
 				{
 					$triangle.addClass('closed');
@@ -81,6 +72,30 @@
 					$triangle.addClass('open');
 					$container.slideDown();
 				}
+			},
+			secondLevelMenu : function(index, data, event)
+			{
+				var $container, $triangle;
+
+				$triangle = $('#child-triangle-' + data.primaryNavId);
+				$container = $('#child-page-' + data.primaryNavId);
+
+				if($container.is(':visible'))
+				{
+					$triangle.addClass('closed');
+					$triangle.removeClass('open');
+					$container.slideUp();
+				}
+				else
+				{
+					$triangle.removeClass('closed');
+					$triangle.addClass('open');
+					$container.slideDown();
+				}
+			},
+			showPartnerModal : function()
+			{
+				Import('Common').showModal('user-partners');
 			},
 			sidebarSearch : function(form)
 			{

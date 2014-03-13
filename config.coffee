@@ -15,8 +15,9 @@ exports.config =
 
 			order:
 				before: [
+					'vendor/scripts/stringify.js',
 					'vendor/scripts/jquery.js',
-					'vendor/scripts/knockout.js'
+					'vendor/scripts/knockout.js',
 
 					'app/base/javascript/import-export.js',
 					'app/base/javascript/route-table.js',
