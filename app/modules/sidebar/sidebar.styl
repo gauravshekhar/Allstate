@@ -70,43 +70,64 @@
 			li 
 				padding 5px 0
 
-				.closed
-					float left
-					width 0
-					height 0
-					border-top 6px solid transparent
-					border-bottom 6px solid transparent
-					border-left 6px solid #00467F
-					position relative
-					top 2px
-					margin-right 7px
+				.triangle-wrapper:hover
+					
+					.closed
+						border-top 6px solid transparent
+						border-bottom 6px solid transparent
+						border-left 6px solid #0096D6
 
-				.open
-					float left
-					width 0
-					height 0
-					border-top 6px solid #00467F
-					border-right 6px solid transparent
-					border-left 6px solid transparent
-					position relative
-					top 7px
-					right 3px
-					margin-right 1px
+					.open
+						border-top 6px solid #0096D6
+						border-right 6px solid transparent
+						border-left 6px solid transparent
 
-				.text:hover
+				.triangle-wrapper
+					cursor pointer
+					float left
+					width 15px
+					height 15px
+
+					.closed
+						width 0
+						height 0
+						border-top 6px solid transparent
+						border-bottom 6px solid transparent
+						border-left 6px solid #00467F
+						position relative
+						top 2px
+						cursor pointer
+
+					.open
+						width 0
+						height 0
+						border-top 6px solid #00467F
+						border-right 6px solid transparent
+						border-left 6px solid transparent
+						position relative
+						top 7px
+						right 3px
+						cursor pointer
+
+				.link:hover
 					cursor pointer
 					text-decoration underline
 
 				.text
+					display block
 					font-size 15px
 
 				.more-info
 					display none
-					margin 2px 0 2px 14px
+					margin 7px 0 2px 12px
 
-					a
-						display block
-						padding 2px
+					.child-pages
+						display none
+						margin 3px 0 8px 24px
+
+					.root-page
+						margin-bottom 2px
+
 
 
 			
