@@ -66,9 +66,7 @@
 		ol(data-bind="foreach:$root.announcements")
 			// ko if: $index() < 3
 			li: .text
-				// ko if: title
-				a(data-bind="text:title", href="javascript:void(0)")
-				// /ko
+				a(data-bind="", href="javascript:void(0)") - Welcome to the new reference system
 			// /ko
 		// ko if: $root.announcements().length > 0
 		a(class="more", href="javascript:void(0)") - More Announcements
