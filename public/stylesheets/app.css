@@ -155,7 +155,7 @@ fieldset {
 .modal {
   display: none;
   z-index: 1000;
-  top: 100px;
+  top: 50px;
   position: absolute;
   left: 50%;
   margin-left: -300px;
@@ -476,6 +476,7 @@ html body #page-content .page {
   margin: 20px 14px 14px 14px;
 }
 #user-partners .radio-wrapper .title {
+  font-weight: 700;
   margin-bottom: 10px;
 }
 #user-partners .radio-wrapper .container .each {
@@ -492,6 +493,29 @@ html body #page-content .page {
 }
 #user-partners .radio-wrapper .container .each label {
   margin-left: 5px;
+}
+#user-partners .order-wrapper {
+  margin: 20px 14px 14px 14px;
+}
+#user-partners .order-wrapper .title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+#user-partners .order-wrapper ul {
+  padding: 0;
+  margin: 0;
+}
+#user-partners .order-wrapper ul .active {
+  background-color: #00467f;
+  color: #fff;
+}
+#user-partners .order-wrapper ul li {
+  text-align: center;
+  cursor: move;
+  padding: 10px;
+  border: 1px dashed;
+  background-color: #fcfcfc;
+  margin: 10px;
 }
 #user-partners .submit-wrapper {
   margin: 14px;
