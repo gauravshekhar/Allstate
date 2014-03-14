@@ -1679,20 +1679,23 @@ $(document).ready(function()
 			},
 			checkboxClicked : function(data, event)
 			{
+				var temp = self.selectedCheckboxes();
+
 				if(event.target.checked)
 				{
 					data.menuItems = ko.observableArray([]);
-					self.selectedCheckboxes.push(data);
+					temp.push(data);
 				}
 				else
 				{
-					self.selectedCheckboxes($.grep(self.selectedCheckboxes(), function(value, index)
+					temp = $.grep(self.selectedCheckboxes(), function(value, index)
 					{
 						return (value === data) ? false : true;
-					}));
+					});
 				}
 
-				self.userPartners(self.selectedCheckboxes());
+				self.selectedCheckboxes(temp);
+				self.userPartners(temp);
 
 				return true;
 			},
