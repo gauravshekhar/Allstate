@@ -103,23 +103,21 @@
 			},
 			checkboxClicked : function(data, event)
 			{
-				var temp = self.selectedCheckboxes();
-
 				if(event.target.checked)
 				{
 					data.menuItems = ko.observableArray([]);
-					temp.push(data);
+					self.selectedCheckboxes().push(data);
 				}
 				else
 				{
-					temp = $.grep(self.selectedCheckboxes(), function(value, index)
+					self.selectedCheckboxes() = $.grep(self.selectedCheckboxes(), function(value, index)
 					{
 						return (value === data) ? false : true;
 					});
 				}
 
-				self.selectedCheckboxes(temp);
-				self.userPartners(temp);
+				self.selectedCheckboxes(self.selectedCheckboxes());
+				self.userPartners(self.selectedCheckboxes());
 
 				return true;
 			},

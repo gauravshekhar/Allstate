@@ -1509,6 +1509,11 @@
 						});
 					});
 
+					response.userPartners.sort(function(a,b)
+					{
+						return a.index - b.index;
+					});
+
 					self.partners = response;
 					self._partners.populateViewModel(callbackData.viewModel, response);
 				},
