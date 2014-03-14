@@ -4,7 +4,8 @@
 	{
 		'LoginPage'           : '#/login/',
 		'DashboardPage'       : '#/dashboard/',
-		'UserPartnersModal'   : '#/user-partners/'
+		'UserPartnersModal'   : '#/user-partners/',
+		'Page'                : '#/page/(id/)'
 	};
 
 	Export('RouteTable', RouteTable);

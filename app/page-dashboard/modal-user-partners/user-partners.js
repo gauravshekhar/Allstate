@@ -1,6 +1,7 @@
 (function()
 {
 	var self;
+	var Cache = Import('Cache');
 	var Common = Import('Common');
 	var MasterVM = Import('MasterVM');
 
@@ -17,41 +18,94 @@
 		{
 			init : function()
 			{
-				self.initKnockout();
 				self.callGlobalViewModel();
+				self.initKnockout();
 				Common.setCurrentModal(self, 'UserPartnersModal', '#user-partners');
+				self.bindTheDOM();
+				self.bindJQuerySorting();
 			},
 			destroy : function(modal2modal)
 			{
 				Common.destroyModal(self, 'UserPartnersModal', '#user-partners', modal2modal);
-			},
-			initKnockout : function()
-			{
-				self.errors = ko.observableArray([]);
-				self.selectedCheckboxes = ko.observableArray([]);
-			},
-			destroyIconClick : function()
-			{
-				self.errors([]);
-				
-				if(self.selectedCheckboxes().length === 0 || self.selectedCheckboxes().length > 5)
-				{
-					self.errors.push('Please select one to five partners');
-				}
-				else
-				{
-					self.destroy();
-				}
 			},
 			callGlobalViewModel : function()
 			{
 				self.allPartners = MasterVM.allPartners;
 				self.userPartners = MasterVM.userPartners;
 			},
+			initKnockout : function()
+			{
+				self.errors = ko.observableArray([]);
+				self.selectedCheckboxes = ko.observableArray(self.userPartners());
+			},
+			bindTheDOM : function()
+			{
+				var $root;
+
+				$root = $('#user-partners');
+
+				$.each(self.selectedCheckboxes(), function()
+				{
+					$root.find('#'+this.id).prop('checked', true);
+				});
+
+			},
+			bindJQuerySorting : function()
+			{
+				$('#sort-wrapper').sortable();
+				$('#sort-wrapper').on('sortstart', function(event, ui)
+				{
+					ui.item.addClass('active');
+				});
+				$('#sort-wrapper').on('sortstop', function(event, ui)
+				{
+					ui.item.removeClass('active');
+
+					var ids, id;
+					
+					ids = {};
+
+					$('#sort-wrapper').find('li').each(function(i)
+					{
+						id = $(this).attr('data-id');
+
+						if(id)
+						{
+							ids[id] = i;
+						}
+					});
+					
+					$.each(self.selectedCheckboxes(), function()
+					{
+						this.index = ids[this.id];
+					});
+
+					self.selectedCheckboxes().sort(function(a,b)
+					{
+						return a.index - b.index;
+					});
+
+					self.userPartners(self.selectedCheckboxes());
+				});
+			},
+			destroyIconClick : function()
+			{
+				self.errors([]);
+				
+				if(self.userPartners().length === 0 || self.userPartners().length > 5)
+				{
+					self.errors.push('Please select one to five partners');
+				}
+				else
+				{
+					self.submitPartners.call();
+				}
+			},
 			checkboxClicked : function(data, event)
 			{
 				if(event.target.checked)
 				{
+					data.menuItems = ko.observableArray([]);
 					self.selectedCheckboxes.push(data);
 				}
 				else
@@ -61,6 +115,8 @@
 						return (value === data) ? false : true;
 					}));
 				}
+
+				self.userPartners(self.selectedCheckboxes());
 
 				return true;
 			},
@@ -78,23 +134,20 @@
 					{
 						Common.showLoading();
 
-						var temp = [];
+						var partners = [];
 
-						$.each(self.selectedCheckboxes(), function()
+						$('#sort-wrapper').find('li').each(function(i)
 						{
-							temp.push(
+							partners.push(
 							{
-								id : this.id,
-								index : this.index
+								index : i,
+								id : $(this).attr('data-id')
 							});
 						});
-						
-						self.requestData = Common.stringify(
-						{
-							partners:temp
-						});
 
-						Common.POST(Common.formatUrl('partners'), self.requestData, 'application/json', self.submitPartners.callback);
+						self.requestData = {partners:partners};
+
+						Common.POST(Common.formatUrl('partners'), Common.stringify(self.requestData), 'application/json', self.submitPartners.callback);
 					}
 				},
 				callback : function(errors, response)
@@ -108,10 +161,9 @@
 
 						Common.waitForServiceCalls(function()
 						{
-							alert('shit');
-							self.destroy();
 							Common.hideLoading();
-						});
+							self.destroy();
+						});					
 					}
 					else
 					{

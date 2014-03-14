@@ -8,21 +8,27 @@
 	form(data-bind="submit:submitPartners.call")
 		include ../../base/jade/error-handling
 
-		.text-wrapper
-			div Please select one to five partners from the sections below. The partners you select will be added to your homepage for easy acces and to narrow the focus of your workflow.
-			div At anytime you can change the partners by checking/unchecking the selctions again from the link labeled "My Settings" from the top right of the ORS website.
+		.text-wrapper.hide
+			div Please select one to five default partners from the sections below. 
+			div At anytime you can change the partners by reopening this modal from the link in your dashboard.
 
 		.radio-wrapper
-			.title Select 
-				span.strong one 
-				span to 
-				span.strong five 
-				span partners
+			.title Select one to five default partners
 			.container(data-bind="foreach:allPartners")
-				.each
-					input(data-bind="click:$parent.checkboxClicked, attr:{id:partnerName}", type="checkbox")
-					label(data-bind="text:partnerName, attr:{'for':partnerName}")
+				.each.ellipsis
+					input(data-bind="click:$parent.checkboxClicked, attr:{id:id}", type="checkbox")
+					label(data-bind="text:partnerName, attr:{'for':id}")
 			.clear
+
+		
+		.order-wrapper
+			// ko if: selectedCheckboxes().length > 0
+			.title Drag and drop your selected partners in order of preference.
+			// /ko
+
+			ul(id="sort-wrapper", data-bind="foreach:selectedCheckboxes")
+				li(data-bind="text:partnerName, attr:{'data-id':id}")
+		
 					
 
 		.submit-wrapper
