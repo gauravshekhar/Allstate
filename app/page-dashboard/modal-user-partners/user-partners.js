@@ -115,7 +115,7 @@
 						return (value === data) ? false : true;
 					});
 				}
-
+				console.log(self.selectedCheckboxes());
 				self.selectedCheckboxes(self.selectedCheckboxes());
 				self.userPartners(self.selectedCheckboxes());
 
