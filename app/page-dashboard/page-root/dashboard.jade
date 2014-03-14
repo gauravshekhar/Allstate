@@ -28,14 +28,6 @@
 		.description(data-bind="text:description")
 
 		.tables
-			// ko if: announcements.length > 0
-			.container
-				.heading Announcements
-				ul(data-bind="foreach:announcements")
-					// ko if: title
-					li: a(href="javascript:void(0)", data-bind="text:title")
-					// /ko
-			// /ko
 			// ko if: bookmarks.length > 0
 			.container.bookmarks-container
 				.heading Bookmarks
