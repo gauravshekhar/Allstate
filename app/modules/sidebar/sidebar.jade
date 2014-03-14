@@ -60,18 +60,22 @@
 						// /ko
 	// /ko
 
+	// ko if: $root.announcements().length > 0
 	.container
 		.title Global Announcements
 		ol(data-bind="foreach:$root.announcements")
 			// ko if: $index() < 3
 			li: .text
-				a(data-bind="text:title", href="javascript:void(0)") - Canada GM call center opening
+				// ko if: title
+				a(data-bind="text:title", href="javascript:void(0)")
+				// /ko
 			// /ko
 		// ko if: $root.announcements().length > 0
 		a(class="more", href="javascript:void(0)") - More Announcements
 		.clear
 		// /ko
-	
+	// /ko
+
 // /ko
 
 
