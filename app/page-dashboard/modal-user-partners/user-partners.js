@@ -110,12 +110,16 @@
 				}
 				else
 				{
-					self.selectedCheckboxes() = $.grep(self.selectedCheckboxes(), function(value, index)
+					$.each(self.selectedCheckboxes(), function(i)
 					{
-						return (value === data) ? false : true;
+						if(data.id === this.id)
+						{
+							self.selectedCheckboxes().splice(i, 1);
+							return false;
+						}
 					});
 				}
-				console.log(self.selectedCheckboxes());
+
 				self.selectedCheckboxes(self.selectedCheckboxes());
 				self.userPartners(self.selectedCheckboxes());
 
